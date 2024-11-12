@@ -23,12 +23,14 @@ const StudentForm = ({ onSave, selectedStudent, onCancel }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSave({ name, age, grade, email });
+    onSave({ name, age: Number(age), grade, email });
   };
 
   return (
     <form onSubmit={handleSubmit} className="bg-white p-6 rounded-lg shadow-md mb-6">
-      <h2 className="text-lg font-semibold mb-4">{selectedStudent ? "Edit Student" : "Add Student"}</h2>
+      <h2 className="text-lg font-semibold mb-4">
+        {selectedStudent ? "Edit Student" : "Add Student"}
+      </h2>
       <input
         type="text"
         placeholder="Name"
@@ -66,7 +68,11 @@ const StudentForm = ({ onSave, selectedStudent, onCancel }) => {
           Save
         </button>
         {selectedStudent && (
-          <button type="button" onClick={onCancel} className="bg-gray-400 text-white p-2 rounded hover:bg-gray-500">
+          <button
+            type="button"
+            onClick={onCancel}
+            className="bg-gray-400 text-white p-2 rounded hover:bg-gray-500"
+          >
             Cancel
           </button>
         )}
